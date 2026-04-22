@@ -1,6 +1,7 @@
 import vertexai
 from google.adk.agents import Agent
 from google.adk.tools.vertex_ai_search_tool import VertexAiSearchTool
+from google.adk.apps import AdkApp
 
 # 1. Initialize Vertex AI with your project details from app.py
 vertexai.init(project="mydummy-1", location="global")
@@ -29,8 +30,15 @@ travel_agent = Agent(
     tools=[alternative_location_tool]
 )
 
+
+# 4. Wrap the Agent in an AdkApp
+# The 'app' variable is what the 'adk deploy' command looks for 
+# when it inspects your file.
+app = AdkApp(agents=[travel_agent])
+
 # This allows you to deploy the agent via CI/CD
 if __name__ == "__main__":
     # In a real CI/CD, you would use 'adk deploy' or this SDK method:
     # travel_agent.deploy() 
-    print("Agent configuration loaded successfully.")
+    # print("Agent configuration loaded successfully.")
+    print("ADK App initialized with Info_Agent_3.")
