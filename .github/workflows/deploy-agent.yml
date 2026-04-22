@@ -15,8 +15,9 @@ jobs:
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
+          workload_identity_provider: 'projects/172748774286/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'ag-cicd-deployer@mydummy-1.iam.gserviceaccount.com'        
+      
       - name: Set up Python & ADK
         uses: actions/setup-python@v5
         with:
