@@ -2,7 +2,7 @@ name: Deploy Travel Buddy Agent
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, dev ]
 
 jobs:
   deploy:
@@ -31,6 +31,6 @@ jobs:
         run: |
           # The 'adk deploy' command packages your Python logic for the cloud
           adk deploy agent_engine agents/travel_agent \
-            --display_name "Travel Buddy 3 (${{ env.target }})" \
+            --display_name "Travel Buddy 3 (${{ github.ref_name }})" \
             --region us-central1 \
             --staging_bucket gs://${{ vars.GCP_PROJECT_ID }}-staging
