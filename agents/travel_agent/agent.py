@@ -24,7 +24,7 @@ travel_agent = Agent(
 )
 
 # Global 'app' variable required for ADK CLI
-app = App(agents=[travel_agent])
+app = App(name="travel_buddy_app", root_agent=travel_agent)
 
 if __name__ == "__main__":
     print("ADK App initialized for local testing.")
