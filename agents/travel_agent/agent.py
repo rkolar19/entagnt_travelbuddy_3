@@ -9,7 +9,7 @@ alternative_location_tool = VertexAiSearchTool(
 )
 
 # Define Agent
-travel_agent = Agent(
+root_agent = Agent(
     name="Info_Agent_3",
     model="gemini-2.5-flash",
     description="Help customers answer travel related queries",
@@ -24,7 +24,7 @@ travel_agent = Agent(
 )
 
 # Global 'app' variable required for ADK CLI
-app = App(name="travel_buddy_app", root_agent=travel_agent)
+app = App(name="travel_buddy_app", root_agent=root_agent)
 
 if __name__ == "__main__":
     print("ADK App initialized for local testing.")
