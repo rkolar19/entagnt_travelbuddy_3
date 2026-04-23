@@ -4,7 +4,8 @@ from google.adk.tools.vertex_ai_search_tool import VertexAiSearchTool
 from google.adk.apps import AdkApp
 
 # 1. Initialize Vertex AI with your project details from app.py
-vertexai.init(project="mydummy-1", location="global")
+# vertexai.init(project="mydummy-1", location="us-central1")
+vertexai.init()
 
 # 2. Re-create the "Alternative Location 3" Data Store Tool
 # We use the exact Data Store ID found in your JSON file

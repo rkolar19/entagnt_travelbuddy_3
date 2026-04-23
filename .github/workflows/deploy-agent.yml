@@ -36,6 +36,8 @@ jobs:
         run: |
           # The 'adk deploy' command packages your Python logic for the cloud
           adk deploy agent_engine agents/travel_agent \
-            --display_name "Travel Buddy 3 (${{ github.ref_name }})" \
+            --project="mydummy-1" \
+            --display_name "Travel Buddy 3" \
             --region us-central1 \
-            --staging_bucket gs://${{ vars.GCP_PROJECT_ID }}-staging
+            --set-env-vars="POETRY_VIRTUALENVS_CREATE=false" \
+            --staging_bucket gs://mydummy-1-staging
