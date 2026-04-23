@@ -1,7 +1,7 @@
 import vertexai
 from google.adk.agents import Agent
 from google.adk.tools.vertex_ai_search_tool import VertexAiSearchTool
-from google.adk.apps import AdkApp
+from google.adk.apps import App
 
 # Define Tool
 alternative_location_tool = VertexAiSearchTool(
@@ -26,7 +26,7 @@ travel_agent = Agent(
 )
 
 # Global 'app' variable required for ADK CLI
-app = AdkApp(agents=[travel_agent])
+app = App(agents=[travel_agent])
 
 if __name__ == "__main__":
     print("ADK App initialized for local testing.")
