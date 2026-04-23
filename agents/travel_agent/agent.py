@@ -1,10 +1,10 @@
 import vertexai
-from google.adk.agents import Agent
-from google.adk.tools.vertex_ai_search_tool import VertexAiSearchTool
-from google.adk.apps import AdkApp
+from vertexai.preview.agents import Agent
+from vertexai.preview.agents.tools import VertexAISearchTool
+from vertexai.preview.agents import AgentApp
 
 # Define Tool
-alternative_location_tool = VertexAiSearchTool(
+alternative_location_tool = VertexAISearchTool(
     name="Alternative_Location_3",
     description="Use this tool if user's request contains a location that doesn't exist",
     data_store_id="projects/172748774286/locations/global/collections/default_collection/dataStores/dswakanda-3_1768356749548"
@@ -26,7 +26,7 @@ travel_agent = Agent(
 )
 
 # Global 'app' variable required for the ADK CLI
-app = AdkApp(agents=[travel_agent])
+app = AgentApp(agents=[travel_agent])
 
 if __name__ == "__main__":
-    print("ADK App initialized for local testing.")
+    print("Agent App initialized for local testing.")
