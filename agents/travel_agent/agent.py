@@ -13,7 +13,7 @@ travel_agent = Agent(
     name="Info_Agent_3",
     model="gemini-2.5-flash",
     description="Help customers answer travel related queries",
-    instructions="""
+    instruction="""
     Goal: Help customers answer travel related queries.
     
     Steps:
