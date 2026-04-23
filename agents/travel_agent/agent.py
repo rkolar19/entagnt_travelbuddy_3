@@ -5,8 +5,6 @@ from google.adk.apps import App
 
 # Define Tool
 alternative_location_tool = VertexAiSearchTool(
-    name="Alternative_Location_3",
-    description="Use this tool if user's request contains a location that doesn't exist",
     data_store_id="projects/172748774286/locations/global/collections/default_collection/dataStores/dswakanda-3_1768356749548"
 )
 
