@@ -12,8 +12,8 @@ alternative_location_tool = VertexAiSearchTool(
 travel_agent = Agent(
     name="Info_Agent_3",
     model="gemini-2.5-flash",
-    goal="Help customers answer travel related queries",
-    instruction="""
+    description="Help customers answer travel related queries",
+    instructions="""
     Goal: Help customers answer travel related queries.
     
     Steps:
