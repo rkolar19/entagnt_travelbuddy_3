@@ -30,14 +30,16 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-adk google-cloud-aiplatform[agent_engines]
+          # pip install google-adk google-cloud-aiplatform[agent_engines]
+          pip install -r agents/travel_agent/requirements.txt
 
-      - name: Deploy to Vertex AI Agent Engine
+      - name: Deploy Agent Engine
+        env:
+          # This is where the builder will pick it up
+          POETRY_VIRTUALENVS_CREATE: "false"
         run: |
-          # The 'adk deploy' command packages your Python logic for the cloud
           adk deploy agent_engine agents/travel_agent \
             --project="mydummy-1" \
             --display_name="Travel Buddy 3" \
             --region="us-central1" \
-            --set-env-vars="POETRY_VIRTUALENVS_CREATE=false" \
             --staging_bucket="gs://mydummy-1-staging"
