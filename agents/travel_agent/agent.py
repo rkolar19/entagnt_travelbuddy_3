@@ -3,9 +3,6 @@ from google.adk.agents import Agent
 from google.adk.tools.vertex_ai_search_tool import VertexAiSearchTool
 from google.adk.apps import AdkApp
 
-# Use the regional endpoint where your agent is deployed
-vertexai.init(project="mydummy-1", location="us-central1")
-
 # Define Tool
 alternative_location_tool = VertexAiSearchTool(
     name="Alternative_Location_3",
@@ -20,6 +17,7 @@ travel_agent = Agent(
     goal="Help customers answer travel related queries",
     instruction="""
     Goal: Help customers answer travel related queries.
+    
     Steps:
     1. Greet the users, then ask how you can help them today.
     2. Use the Alternative_Location_3 tool if the user's request contains a location that does not exist.
@@ -27,8 +25,8 @@ travel_agent = Agent(
     tools=[alternative_location_tool]
 )
 
-# Global 'app' variable for the ADK CLI
+# Global 'app' variable required for the ADK CLI
 app = AdkApp(agents=[travel_agent])
 
 if __name__ == "__main__":
-    print("ADK App initialized locally.")
+    print("ADK App initialized for local testing.")

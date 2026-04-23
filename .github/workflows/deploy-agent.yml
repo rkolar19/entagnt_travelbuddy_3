@@ -25,17 +25,15 @@ jobs:
       - name: Set up Python & ADK
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # pip install google-adk google-cloud-aiplatform[agent_engines]
           pip install -r agents/travel_agent/requirements.txt
 
       - name: Deploy Agent Engine
         env:
-          # This is where the builder will pick it up
           POETRY_VIRTUALENVS_CREATE: "false"
         run: |
           adk deploy agent_engine agents/travel_agent \
