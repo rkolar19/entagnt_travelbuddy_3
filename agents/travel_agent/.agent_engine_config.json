@@ -1,0 +1,6 @@
+{
+  "resource_limits": {
+    "cpu": "2",
+    "memory": "4Gi"
+  }
+}

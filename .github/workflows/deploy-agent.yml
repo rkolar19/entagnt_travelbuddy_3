@@ -2,12 +2,12 @@ name: Deploy Travel Buddy Agent
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main, stage ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+    environment: ${{ github.ref == 'refs/heads/main' && 'prod' || 'stage' }}
     permissions:
       id-token: 'write'
       contents: read
@@ -34,6 +34,17 @@ jobs:
 
       - name: Install Google ADK
         run: pip install google-cloud-aiplatform[adk]
+
+      - name: Generate Dynamic Config from GitHub Vars
+        run: |
+          cat <<EOF > agents/travel_agent/.agent_engine_config.json
+          {
+            "resource_limits": {
+              "cpu": "${{ vars.AGENT_CPU || '1' }}",
+              "memory": "${{ vars.AGENT_MEMORY || '2Gi' }}"
+            }
+          }
+          EOF
 
       - name: Deploy Agent Engine
         env:

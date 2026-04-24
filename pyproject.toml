@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "entagnt_travelbuddy"
+version = "0.1.0"
+description = "A Google Cloud ADK agent application for travel queries."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk",
+    "google-cloud-aiplatform>=1.114.0",
+    "cloudpickle==3.0.0",
+    "pydantic>=2.6.4",
+    "requests"
+]
+
+[tool.setuptools.packages.find]
+include = ["app*", "agents*"]
