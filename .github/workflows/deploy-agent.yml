@@ -50,8 +50,14 @@ jobs:
         env:
           POETRY_VIRTUALENVS_CREATE: "false"
         run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            ENV_SUFFIX="prod"
+          else
+            ENV_SUFFIX="stage"
+          fi
+          
           adk deploy agent_engine agents/travel_agent \
             --project="mydummy-1" \
-            --display_name="Travel Buddy 3" \
+            --display_name="Travel-Buddy-${ENV_SUFFIX}" \
             --region="us-central1" \
             --staging_bucket="gs://mydummy-1-staging"
